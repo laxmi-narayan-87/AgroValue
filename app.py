@@ -1,11 +1,15 @@
+import pickle  
 from flask import Flask, request, jsonify
-import pickle
 import numpy as np
 
 app = Flask(__name__)
 
-with open('model.pkl', 'rb') as file:
-    model = pickle.load(file)
+# Load the model
+try:
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)  
+except Exception as e:
+    print(f"Error loading the model: {e}")
 
 @app.route('/predict', methods=['POST'])
 def predict():
