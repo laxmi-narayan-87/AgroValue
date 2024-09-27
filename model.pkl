@@ -1,7 +1,4 @@
-import pickle
+import joblib
 
-try:
-    with open('model.pkl', 'rb') as file:
-        model = pickle.load(file)
-except (pickle.UnpicklingError, EOFError, AttributeError, ImportError, IndexError) as e:
-    print(f"Error loading model: {e}")
+# Save the model
+joblib.dump(model, 'model.pkl')
