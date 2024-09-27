@@ -5,4 +5,3 @@ scikit-learn
 statsmodels
 streamlit
 requests
-pickle
