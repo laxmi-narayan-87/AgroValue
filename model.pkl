@@ -1,6 +1,7 @@
 import pickle
 
-# Assuming 'model' is your trained model
-filename = 'model.pkl'
-with open(filename, 'wb') as file:
-    pickle.dump(model, file)
+try:
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)
+except (pickle.UnpicklingError, EOFError, AttributeError, ImportError, IndexError) as e:
+    print(f"Error loading model: {e}")
