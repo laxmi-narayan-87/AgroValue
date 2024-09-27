@@ -1,22 +1,22 @@
+import streamlit as st
 import pickle  
-from flask import Flask, request, jsonify
 import numpy as np
 
-app = Flask(__name__)
+st.title("AgroValue: Price Prediction for Agricultural Commodities")
 
-# Load the model
 try:
     with open('model.pkl', 'rb') as file:
         model = pickle.load(file)  
 except Exception as e:
-    print(f"Error loading the model: {e}")
+    st.error(f"Error loading the model: {e}")
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    data = request.get_json()
-    features = np.array(data['features']).reshape(1, -1)
-    prediction = model.predict(features)
-    return jsonify({'prediction': prediction.tolist()})
+feature1 = st.number_input("Enter Feature 1", value=0.0)
+feature2 = st.number_input("Enter Feature 2", value=0.0)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+features = np.array([[feature1, feature2]])
+if st.button('Predict'):
+    try:
+        prediction = model.predict(features)
+        st.success(f"Predicted Price: {prediction[0]}")
+    except Exception as e:
+        st.error(f"Error making prediction: {e}")
