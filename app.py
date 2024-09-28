@@ -25,7 +25,7 @@ file_path = "monthly_data.csv"
 # Load data from CSV
 try:
     df = pd.read_csv(file_path)
-    st.success("CSV Data loaded successfully.")
+    st.success()
 except FileNotFoundError:
     st.error(f"CSV file not found: {file_path}")
     df = None
