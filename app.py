@@ -20,12 +20,12 @@ except Exception as e:
 st.title("AgroValue: Price Prediction for Agricultural Commodities")
 
 # CSV File Path
-file_path = "monthly_data1.csv"  
+file_path = "monthly_data.csv"  
 
 # Load data from CSV
 try:
     df = pd.read_csv(file_path)
-    st.success("CSV Data loaded successfully.")
+    st.success()
 except FileNotFoundError:
     st.error(f"CSV file not found: {file_path}")
     df = None
