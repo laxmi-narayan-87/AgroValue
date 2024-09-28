@@ -6,3 +6,4 @@ statsmodels
 streamlit
 requests
 joblib
+matplotlib
