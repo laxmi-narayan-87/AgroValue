@@ -37,7 +37,7 @@ if df is not None:
     # Data preprocessing for SARIMAX forecasting
     df.set_index('Commodities', inplace=True)
     df = df.T
-    df.index = pd.date_range(start='2014-01', periods=len(df), freq='M')
+    df.index = pd.date_range(start='2014-01', periods=len(df), freq='ME')
     df = df.ffill()  # Forward fill to handle missing data
 
     # Get commodity list from CSV data
