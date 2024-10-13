@@ -12,9 +12,6 @@ try:
 except FileNotFoundError:
     st.error("ML model file not found! Please upload the model file.")
     model = None  # Fallback in case the model can't be loaded
-except Exception as e:
-    st.error(f"Error loading the ML model: {e}")
-    model = None
 
 # Title for the app
 st.title("AgroValue: Price Prediction for Agricultural Commodities")
