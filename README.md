@@ -1,3 +1,33 @@
+## Engineering focus
+
+AgroValue explores **AI/ML-based agricultural commodity-price prediction** as an SIH 1647 project.
+
+### Problem → data → model workflow
+
+```text
+Historical commodity data
+        ↓
+Data analysis / cleaning
+        ↓
+Feature exploration
+        ↓
+Predictive modelling
+        ↓
+Evaluation / visualization
+        ↓
+Price-forecasting insights
+```
+
+### Project scope
+
+The project investigates historical price patterns for agricultural commodities and applies data-science techniques to support forecasting-oriented analysis.
+
+### Documentation note
+
+Model accuracy, dataset coverage, and validation methodology should be interpreted from the notebooks in this repository; this README intentionally does not invent performance numbers that are not documented here.
+
+---
+
 ###**AgroValue**
 
 AgroValue is a project developed for SIH 1647. 
