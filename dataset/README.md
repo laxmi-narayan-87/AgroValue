@@ -1,38 +1,62 @@
-# Daily Price Dataset
+# APMC / Mandi Daily Dataset
 
-This folder stores one immutable CSV snapshot per collection date for AgroValue.
+This folder is for the **previous AgroValue agricultural-market dataset**, not the newer consumer-price/PMS dataset.
 
 ## Source
 
-Department of Consumer Affairs, Price Monitoring System (PMS), Government of India.
+Government of India Open Government Data (OGD) Platform, Ministry of Agriculture & Farmers Welfare / Directorate of Marketing & Inspection (AGMARKNET).
 
-The PMS reports daily retail and wholesale prices for essential commodities. The source states that daily price data are maintained by the NIC cell and collected from reporting centres across India.
+Resource:
+`9ef84268-d588-465a-a308-a864a43d0070`
 
-## File convention
+The official OGD catalog describes this resource as **daily** wholesale prices from various agricultural markets (mandis), including minimum, maximum and modal prices. citeturn2search0turn2search1
 
-`daily_prices_YYYY-MM-DD.csv`
+## Structure
 
-Each file represents the All-India daily price snapshot for that date. Existing date files must not be overwritten when a new date is collected.
+```
+dataset/
+├── README.md
+├── fetch_daily.py
+└── daily/
+    ├── YYYY-MM-DD.csv
+    ├── YYYY-MM-DD.csv
+    └── ...
+```
 
-## Schema
+Each daily file contains:
 
-- `date`: observation date
-- `commodity`: commodity name
-- `category`: analytical commodity category
-- `retail_price`: reported all-India average retail price
-- `retail_unit`: retail unit as reported by PMS
-- `wholesale_price`: reported all-India average wholesale price, when available
-- `wholesale_unit`: wholesale unit as reported by PMS
-- `source`: source system
+- `state`
+- `district`
+- `market`
+- `commodity`
+- `variety`
+- `grade`
+- `arrival_date`
+- `min_price`
+- `max_price`
+- `modal_price`
 
-## Important modeling rule
+Prices follow the AGMARKNET convention of ₹ per quintal. Missing values are kept missing; they are not converted to zero.
 
-Do not directly mix prices with different units. Normalize units before cross-commodity comparisons or model training.
+## Collection rule
 
-Do not invent missing observations. Missing wholesale values remain blank.
+Run:
 
-## Current coverage
+```bash
+export DATA_GOV_API_KEY="YOUR_KEY"
+python dataset/fetch_daily.py
+```
 
-Initial snapshot: 2026-10-04.
+For one date:
 
-Future daily snapshots should be appended as new files. The historical `monthly_data.csv`, `latest_price_data.csv`, and `price_analysis_data.csv` remain unchanged.
+```bash
+python dataset/fetch_daily.py --date YYYY-MM-DD
+```
+
+The collector creates a new file for each arrival date and **never overwrites an existing date file**.
+
+## Modeling
+
+Use `modal_price` as the primary target for price forecasting, with `min_price`, `max_price`, arrivals, market, commodity, state and district available as explanatory variables.
+
+The existing `Agriculture_commodities_dataset.csv` is preserved as the original historical dataset. It is not replaced.
