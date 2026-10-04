@@ -1,15 +1,16 @@
 # APMC / Mandi Daily Dataset
 
-This folder is for the **previous AgroValue agricultural-market dataset**, not the newer consumer-price/PMS dataset.
+This folder archives the **AgroValue agricultural-market (APMC/mandi) dataset**. It is separate from the consumer-price/PMS dataset.
 
 ## Source
 
-Government of India Open Government Data (OGD) Platform, Ministry of Agriculture & Farmers Welfare / Directorate of Marketing & Inspection (AGMARKNET).
+Government of India Open Government Data (OGD) Platform, using the AGMARKNET daily mandi-price resource.
 
-Resource:
+Resource ID:
+
 `9ef84268-d588-465a-a308-a864a43d0070`
 
-The official OGD catalog describes this resource as **daily** wholesale prices from various agricultural markets (mandis), including minimum, maximum and modal prices. citeturn2search0turn2search1
+The official catalog describes the resource as **daily** wholesale market data containing minimum, maximum and modal prices.
 
 ## Structure
 
@@ -19,11 +20,10 @@ dataset/
 ├── fetch_daily.py
 └── daily/
     ├── YYYY-MM-DD.csv
-    ├── YYYY-MM-DD.csv
     └── ...
 ```
 
-Each daily file contains:
+Each daily CSV contains:
 
 - `state`
 - `district`
@@ -36,27 +36,50 @@ Each daily file contains:
 - `max_price`
 - `modal_price`
 
-Prices follow the AGMARKNET convention of ₹ per quintal. Missing values are kept missing; they are not converted to zero.
+Prices are the mandi wholesale prices reported by the source. Missing values are preserved as missing.
 
-## Collection rule
+## Collector
 
-Run:
+The collector uses the API's pagination, reads the feed, groups records by `arrival_date`, and creates one CSV per date. It is intentionally **not** a one-request-per-day historical downloader.
+
+It never overwrites an existing daily file.
+
+### Environment
+
+Set your personal data.gov.in API key:
 
 ```bash
 export DATA_GOV_API_KEY="YOUR_KEY"
+```
+
+Do not commit the key to the repository.
+
+### Run
+
+Archive all dates returned by the current feed:
+
+```bash
 python dataset/fetch_daily.py
 ```
 
-For one date:
+Archive only one arrival date from the feed:
 
 ```bash
 python dataset/fetch_daily.py --date YYYY-MM-DD
 ```
 
-The collector creates a new file for each arrival date and **never overwrites an existing date file**.
+The `--date` option still paginates the API because the source feed is paginated; it only writes matching records.
+
+## Automated collection
+
+GitHub Actions can run the collector daily. Add a repository secret named:
+
+`DATA_GOV_API_KEY`
+
+The workflow stores newly returned dates under `dataset/daily/` and commits them without modifying existing files.
 
 ## Modeling
 
-Use `modal_price` as the primary target for price forecasting, with `min_price`, `max_price`, arrivals, market, commodity, state and district available as explanatory variables.
+`modal_price` is the primary price target for forecasting. Other market and price fields can be used as explanatory variables where the modeling setup supports them.
 
-The existing `Agriculture_commodities_dataset.csv` is preserved as the original historical dataset. It is not replaced.
+The original `Agriculture_commodities_dataset.csv` is preserved and is not replaced by this archive.
