@@ -1,105 +1,97 @@
-## Engineering focus
+# AgroValue
 
-AgroValue explores **AI/ML-based agricultural commodity-price prediction** as an SIH 1647 project.
+AgroValue is an AI/ML-based agricultural commodity price forecasting project.
 
-### Problem → data → model workflow
+## Workflow
 
 ```text
-Historical commodity data
+Government AGMARKNET daily mandi data
         ↓
-Data analysis / cleaning
+Data collection and validation
         ↓
-Feature exploration
+Commodity / market time series
         ↓
-Predictive modelling
+Feature engineering and analysis
         ↓
-Evaluation / visualization
+Forecasting models
         ↓
-Price-forecasting insights
+Backtesting and evaluation
+        ↓
+Streamlit dashboard
 ```
 
-### Project scope
+## Data sources
 
-The project investigates historical price patterns for agricultural commodities and applies data-science techniques to support forecasting-oriented analysis.
+The repository keeps the original historical dataset and a separate archive pipeline for Government of India AGMARKNET/OGD daily mandi data.
 
-### Documentation note
+### Original dataset
 
-Model accuracy, dataset coverage, and validation methodology should be interpreted from the notebooks in this repository; this README intentionally does not invent performance numbers that are not documented here.
+`Agriculture_commodities_dataset.csv` is preserved as the original historical dataset.
 
----
+### Daily mandi archive
 
-###**AgroValue**
+The collector in `dataset/fetch_daily.py` uses Government of India Open Government Data (OGD) resource:
 
-AgroValue is a project developed for SIH 1647. 
-This project primarily uses Jupyter Notebook to achieve its goals.
+`9ef84268-d588-465a-a308-a864a43d0070`
 
-##**Table of Contents**
+Daily files are stored under `dataset/daily/` and contain:
 
--> Introduction
+- state
+- district
+- market
+- commodity
+- variety
+- grade
+- arrival_date
+- min_price
+- max_price
+- modal_price
 
--> Problem Statement 
+Add your personal `DATA_GOV_API_KEY` as an environment variable or GitHub Actions secret. Never commit credentials.
 
-->Features
+## Forecasting app
 
-->Installation
+The current Streamlit app is in `app.py`.
 
-->Usage
+It currently works with `monthly_data.csv` and compares:
 
-->Contributing
+- Seasonal Naive
+- SARIMAX
 
+Evaluation uses a chronological holdout with MAE, RMSE and sMAPE.
 
-##**Introduction**
-AgroValue is designed to bring innovative solutions to the agricultural sector. This project focuses on various aspects of agriculture, providing tools and insights to help farmers and stakeholders make informed decisions.
+## Installation
 
-##**Problem Statement**
-Title: Development of AI-ML based models for predicting prices of agri-horticultural commodities such as pulses and vegetables (onion, potato, onion).
-
-Description:
-The Department of Consumer Affairs monitors the daily prices of 22 essential food commodities through 550 price reporting centres across the country. The Department also maintains buffer stock of pulses, viz., gram, tur, urad, moon, and masur, and onion for strategic market interventions to stabilize the volatility in prices. Decisions for market interventions such as release of stocks from the buffer are taken on the basis of the price trends and outlook. At present, the analyses of prices are based on the seasonality, historical and emerging trends, market intelligence inputs, crop sowing, and production estimates. ARIMA-based economic models have also been used to examine and forecast prices of pulses.
-
-Organization: Ministry of Consumer Affairs, Food and Public Distribution
-
-Department: Department of Consumer Affairs
-
-Category: Software
-
-Theme: Agriculture, FoodTech & Rural Development
-
-##**Features**
-
-Data Analysis: Analyze agricultural data using Jupyter Notebook.
-
-Predictive Models: Implement predictive models to forecast crop yields and other agricultural metrics.
-
-Visualization: Visualize data trends and patterns for better understanding.
-
-##**Installation**
-To install the required dependencies, run the following command:
-
+```bash
 pip install -r requirements.txt
+```
 
-##**Usage**
+## Run the dashboard
 
+```bash
+streamlit run app.py
+```
 
-1.Clone the repository:
+## Run the daily collector
 
-git clone https://github.com/laxmi-narayan-87/AgroValue.git
+```bash
+python dataset/fetch_daily.py
+```
 
-2.Navigate to the project directory:
+To archive one arrival date:
 
-cd AgroValue
+```bash
+python dataset/fetch_daily.py --date YYYY-MM-DD
+```
 
-3.Open the Jupyter Notebook:
+## Automated collection
 
-jupyter notebook
+GitHub Actions workflow:
 
-4.Follow the notebooks provided to analyze data and build models. 
+`.github/workflows/daily-mandi.yml`
 
-##**Contributing**
+The workflow is scheduled daily and requires the repository secret `DATA_GOV_API_KEY`.
 
-Contributions are welcome! Please fork this repository and submit pull requests with any improvements or new features.
+## License
 
-##**License**
-
-This project is licensed under the MIT License.
-
+MIT
