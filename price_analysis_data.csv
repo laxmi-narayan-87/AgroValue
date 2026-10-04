@@ -1,0 +1,42 @@
+date,commodity,category,retail_price,retail_unit,retail_normalized_price,retail_normalized_unit,wholesale_price,wholesale_unit,wholesale_normalized_price,wholesale_normalized_unit,has_wholesale
+2026-10-04,Rice,Cereals,45.87,₹/Kg,45.87,₹/Kg,4111.48,₹/Qtl,4111.48,₹/Qtl,1
+2026-10-04,Wheat,Cereals,32.15,₹/Kg,32.15,₹/Kg,2898.83,₹/Qtl,2898.83,₹/Qtl,1
+2026-10-04,Atta (Wheat),Cereals,37.71,₹/Kg,37.71,₹/Kg,3368.50,₹/Qtl,3368.50,₹/Qtl,1
+2026-10-04,Gram Dal,Pulses,87.75,₹/Kg,87.75,₹/Kg,8103.73,₹/Qtl,8103.73,₹/Qtl,1
+2026-10-04,Tur/Arhar Dal,Pulses,124.82,₹/Kg,124.82,₹/Kg,11603.38,₹/Qtl,11603.38,₹/Qtl,1
+2026-10-04,Urad Dal,Pulses,122.57,₹/Kg,122.57,₹/Kg,11359.04,₹/Qtl,11359.04,₹/Qtl,1
+2026-10-04,Moong Dal,Pulses,110.57,₹/Kg,110.57,₹/Kg,10141.57,₹/Qtl,10141.57,₹/Qtl,1
+2026-10-04,Masur Dal,Pulses,88.46,₹/Kg,88.46,₹/Kg,8053.42,₹/Qtl,8053.42,₹/Qtl,1
+2026-10-04,Broken Rice,Cereals,32.48,₹/Kg,32.48,₹/Kg,2858.06,₹/Qtl,2858.06,₹/Qtl,1
+2026-10-04,Groundnut Oil (Packed),Edible Oils,209.04,₹/Kg,209.04,₹/Kg,19832.02,₹/Qtl,19832.02,₹/Qtl,1
+2026-10-04,Mustard Oil (Packed),Edible Oils,202.03,₹/Kg,202.03,₹/Kg,19255.39,₹/Qtl,19255.39,₹/Qtl,1
+2026-10-04,Vanaspati (Packed),Edible Oils,166.49,₹/Kg,166.49,₹/Kg,15648.19,₹/Qtl,15648.19,₹/Qtl,1
+2026-10-04,Soya Oil (Packed),Edible Oils,166.60,₹/Kg,166.60,₹/Kg,15635.79,₹/Qtl,15635.79,₹/Qtl,1
+2026-10-04,Sunflower Oil (Packed),Edible Oils,190.91,₹/Kg,190.91,₹/Kg,18210.02,₹/Qtl,18210.02,₹/Qtl,1
+2026-10-04,Palm Oil (Packed),Edible Oils,152.68,₹/Kg,152.68,₹/Kg,14398.02,₹/Qtl,14398.02,₹/Qtl,1
+2026-10-04,Potato,Vegetables,21.47,₹/Kg,21.47,₹/Kg,1577.19,₹/Qtl,1577.19,₹/Qtl,1
+2026-10-04,Onion,Vegetables,52.08,₹/Kg,52.08,₹/Kg,4464.94,₹/Qtl,4464.94,₹/Qtl,1
+2026-10-04,Tomato,Vegetables,40.55,₹/Kg,40.55,₹/Kg,3215.44,₹/Qtl,3215.44,₹/Qtl,1
+2026-10-04,Sugar,Sweeteners,54.31,₹/Kg,54.31,₹/Kg,5034.18,₹/Qtl,5034.18,₹/Qtl,1
+2026-10-04,Gur,Sweeteners,65.72,₹/Kg,65.72,₹/Kg,5880.56,₹/Qtl,5880.56,₹/Qtl,1
+2026-10-04,Milk,Dairy,60.22,₹/Ltr,60.22,₹/Ltr,5674.31,₹/100 Ltr,5674.31,₹/100 Ltr,1
+2026-10-04,Tea Loose,Beverages,265.08,₹/Kg,265.08,₹/Kg,23908.98,₹/Qtl,23908.98,₹/Qtl,1
+2026-10-04,Salt Pack (Iodised),Other,22.81,₹/Kg,22.81,₹/Kg,1937.74,₹/Qtl,1937.74,₹/Qtl,1
+2026-10-04,Bajra (whole),Cereals,38.63,₹/Kg,38.63,₹/Kg,,,,,0
+2026-10-04,Jowar (whole),Cereals,45.35,₹/Kg,45.35,₹/Kg,,,,,0
+2026-10-04,Maida (wheat),Cereals,41.42,₹/Kg,41.42,₹/Kg,,,,,0
+2026-10-04,Ragi (whole),Cereals,56.39,₹/Kg,56.39,₹/Kg,,,,,0
+2026-10-04,Suji,Cereals,44.93,₹/Kg,44.93,₹/Kg,,,,,0
+2026-10-04,Besan,Pulses,95.90,₹/Kg,95.90,₹/Kg,,,,,0
+2026-10-04,Desi Ghee,Dairy,699.81,₹/Kg,699.81,₹/Kg,,,,,0
+2026-10-04,Butter (Pasteurised),Dairy,60.59,₹/Kg,60.59,₹/Kg,,,,,0
+2026-10-04,Eggs,Animal Products,82.95,₹/Kg,82.95,₹/Kg,,,,,0
+2026-10-04,Brinjal,Vegetables,41.05,₹/Kg,41.05,₹/Kg,,,,,0
+2026-10-04,Black Pepper (whole),Spices,88.23,₹/100 gm,882.30,₹/Kg,,,,,0
+2026-10-04,Coriander (whole),Spices,43.63,₹/250 gm,174.52,₹/Kg,,,,,0
+2026-10-04,Cummin Seed (whole),Spices,39.16,₹/100 gm,391.60,₹/Kg,,,,,0
+2026-10-04,Red Chillies (whole),Spices,29.99,₹/100 gm,299.90,₹/Kg,,,,,0
+2026-10-04,Turmeric (powder),Spices,16.37,₹/50 gm,327.40,₹/Kg,,,,,0
+2026-10-04,Banana,Fruits,47.11,₹/Kg,47.11,₹/Kg,,,,,0
+2026-10-04,Ginger,Vegetables,35.69,₹/250 gm,142.76,₹/Kg,,,,,0
+2026-10-04,Garlic,Vegetables,44.14,₹/250 gm,176.56,₹/Kg,,,,,0
